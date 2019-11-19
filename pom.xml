@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.abcframework</groupId>
+    <artifactId>abc-parent</artifactId>
+    <version>0.0.3-SNAPSHOT</version>
+  </parent>
+  <artifactId>abc-kafka-consumer</artifactId>
+  <name>abc-kafka-consumer</name>
+  <version>0.0.1-SNAPSHOT</version>
+  <description>Kafka Consumer Utility</description>
+
+  <properties>
+    <abc-kafka-producer.version>0.0.1-SNAPSHOT</abc-kafka-producer.version>
+    <start-class>org.abcframework.kafka.consumer.boot.KafkaConsumerApplication</start-class>
+    <tomcat-embed-core.version>9.0.22</tomcat-embed-core.version>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.abcframework</groupId>
+      <artifactId>abc-kafka-producer</artifactId>
+      <version>${abc-kafka-producer.version}</version>
+    </dependency>
+
+    <!-- ** monitoring * -->
+    <dependency>
+      <groupId>io.micrometer</groupId>
+      <artifactId>micrometer-registry-jmx</artifactId>
+      <optional>true</optional>
+    </dependency>
+
+    <!-- ** development support * -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+      <optional>true</optional>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-devtools</artifactId>
+      <optional>true</optional>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-actuator</artifactId>
+      <optional>true</optional>
+    </dependency>
+    
+    <!-- Spring configuration metadata for contextual help in IDE -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-configuration-processor</artifactId>
+      <optional>true</optional>
+    </dependency>
+
+    <!-- Embedded Kafka server -->
+    <dependency>
+      <groupId>org.springframework.kafka</groupId>
+      <artifactId>spring-kafka-test</artifactId>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>pl.project13.maven</groupId>
+        <artifactId>git-commit-id-plugin</artifactId>
+      </plugin>
+    </plugins>
+  </build>
+ </project>
